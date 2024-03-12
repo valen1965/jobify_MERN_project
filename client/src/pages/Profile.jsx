@@ -28,7 +28,7 @@ const Profile = () => {
   return (
     <Wrapper>
       <Form method='post' className='form' encType='multipart/form-data'>
-        <h4 className='form-title'>profile</h4>
+        <h4 className='form-title'>current profile</h4>
         <div className='form-center'>
           {/* file input */}
           <div className='form-tow'>
