@@ -5,6 +5,8 @@ import { useState, createContext, useContext, useEffect } from 'react';
 import { checkDefaultTheme } from '../App';
 import customFetch from '../utils/customFetch';
 import { toast } from 'react-toastify';
+import { Loading } from '../components';
+import { useNavigation } from 'react-router-dom';
 
 export const loader = async () => {
   try {
@@ -18,6 +20,9 @@ export const loader = async () => {
 const DashboardContext = createContext();
 
 const DashboardLayout = ({ queryClient }) => {
+  const navigation = useNavigation();
+  const isPageLoading = navigation.state === 'loading';
+
   const { user } = useLoaderData();
   const navigate = useNavigate();
 
@@ -59,7 +64,7 @@ const DashboardLayout = ({ queryClient }) => {
           <div>
             <Navbar />
             <div className='dashboard-page'>
-              <Outlet context={{ user }} />
+              {isPageLoading ? <Loading /> : <Outlet context={{ user }} />}
             </div>
           </div>
         </main>
