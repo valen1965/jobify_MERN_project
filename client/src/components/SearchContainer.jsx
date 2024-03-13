@@ -29,7 +29,7 @@ const searchContainer = () => {
             type='search'
             name='search'
             defaultValue={search}
-            onChange={debounce(() => {
+            onChange={debounce((form) => {
               submit(form);
             })}
           />
